@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type numeri struct {
@@ -170,9 +173,14 @@ func stampa(step int) {
 	for i := 0; i < len(matrice); i++ {
 		for j := 0; j < len(matrice[i]); j++ {
 			fmt.Print(matrice[i][j].val, " ")
+			time.Sleep(12 * time.Millisecond)
 		}
 		fmt.Println()
 	}
-	fmt.Println(step + 1)
-	
+	fmt.Println()
+	fmt.Print("step: ", step+1)
+	time.Sleep(400 * time.Millisecond)
+	cmd := exec.Command("clear") // Mac
+	cmd.Stdout = os.Stdout
+	cmd.Run()
 }
